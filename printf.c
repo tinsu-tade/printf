@@ -2,6 +2,20 @@
 #include<stdarg.h>
 #include "main.h"
 #include<unistd.h>
+/**
+ *_printf - prints anything
+ *@format: the format string
+ *
+ * Return: number of bytes printed
+ *
+ *_putchar - prints a char
+ *@c: the character obtained
+ *Return: integer
+ *
+ *countstr - prints a char
+ *@ptr: pointer to string 
+ *Return: integer; 
+ */
 int _printf(const char *format, ...)
 {
 int characterCount ;
@@ -24,14 +38,14 @@ format++;
 switch(*format)
 {
 case 'c':
-charToPrint= va_arg(vaList,int );
+charToPrint = va_arg(vaList, int);
 _putchar(charToPrint);
 format++;
 characterCount++;
 break;
 
 case 's':
-pPrintString = va_arg(vaList,char *);
+pPrintString = va_arg(vaList, char *);
 fputs(pPrintString,stdout);
 format++;
 characterCount += countstr(pPrintString);
@@ -41,8 +55,7 @@ case '%':
 _putchar('%');
 format++;
 characterCount++;
-
-
+    
 case '\0':                           
 break;
 
@@ -66,16 +79,16 @@ return (characterCount);
 
 int countstr(char *ptr)
 {
- int counter = 0;
- while(*ptr != '\0')
+int counter = 0;
+while(*ptr != '\0')
  {
- ptr++;
- counter++;
+ptr++;
+counter++;
  }
- return (counter+1);
+return (counter+1);
 }
  
 int _putchar(char c)
 {
-  return (write(1,&c,1));
+return (write(1,&c,1));
 }
